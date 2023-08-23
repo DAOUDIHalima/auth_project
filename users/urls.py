@@ -53,20 +53,7 @@ urlpatterns = [
     path('outMedicines/', views.outStockMedicine, name='outMedicines'),
     path('search_OutStockMedicine/', views.search_OutStockMedicine, name='search_OutStockMedicine'),
     path('movement_list/', views.movement_list, name='movements'),
-    path('dossier/', views.dossier_medical_detail, name='dossiers'),    
-    path('create_dossier/', views.create_dossier_medical, name='create_dossier_medical'),
-    path('update_dossier/<int:pk>/', views.update_dossier_medical, name='update_dossier_medical'),
-    path('delete_dossier_medical/<int:pk>/', views.delete_dossier_medical, name='delete_dossier_medical'),
-    path('info/', views.info_detail, name='infos'),    
-    path('create_info/', views.create_info, name='create_info'),
-    path('update_info/<int:pk>/', views.update_info, name='update_info'),
-    path('view_info/<int:pk>/',views.view_info, name='view_info'),
-    path('delete_info/<int:pk>/', views.delete_info, name='delete_info'),
-    path('systematique/', views.systematique_detail, name='systematiques'),    
-    path('create_systematique/', views.create_systematique, name='create_systematique'),
-    path('update_systematique/<int:pk>/', views.update_systematique, name='update_systematique'),
-    path('view_systematique/<int:pk>/',views.view_systematique, name='view_systematique'),
-    path('delete_systematique/<int:pk>/', views.delete_systematique, name='delete_systematique'),
+    
 
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
