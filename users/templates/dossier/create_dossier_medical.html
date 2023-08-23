@@ -1,0 +1,59 @@
+{% extends 'Medecin/medecin.html' %}
+{% block content %}
+{%load static%}
+
+<div class="page-wrapper">
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">Add Medical Record</h3>
+                            <div class="nk-block-des text-soft">
+                                <p>You can add a Medical Record by fil these field.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-inner">
+                            <div class="row gy-5">
+                                <form method="post" enctype="multipart/form-data" >
+                                    {% csrf_token %}
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-5"> 
+                                                <label class="form-label" for="{{ form.numero.id_for_label }}">Numero:</label>
+                                                <div class="form-group mb-3">
+                                                    <input type="text"name="numero" class="form-control"
+                                                        placeholder="Numero ">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5"> 
+
+                                                    <label class="form-label" for="{{ form.patient.id_for_label }}">Employee :</label>
+                                                    <div class="form-group mb-3">
+                                                        {{ form.patient}}
+                                                    </div>
+                                            </div>
+                                       
+                                    <div class="form-actions">
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-info">Add</button>
+                                            <button type="reset"  class="btn btn-dark"><a href="{% url 'dossiers' %}" class="text-white">Reset</a></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+ </div>   
+{%endblock%}
+
