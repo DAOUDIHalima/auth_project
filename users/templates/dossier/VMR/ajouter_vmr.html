@@ -1,0 +1,65 @@
+{% extends 'Medecin/medecin.html' %}
+
+{% block content %}
+
+<h1>{{ menu_title }}</h1>
+<p>{{ menu_content }}</p>
+
+<div class="row">
+  <div class="form-container">
+
+    <div class="card my-5" style="margin:70px;">
+    <center><h1 class="surligne-sous-ligne">CERFTIFICAT D'APTITUDE PHYSIQUE</h1></center>
+    <center><h2>Reprise de travail</h2></center>
+      <br>
+      <p class="esp">Je sousigné <B>{{user}}</B>, Médecin de travail de ACWA PARK </p>
+      <p class="esp">Certifié avoir examiné ce jour:</p>
+      <p class="espace-gauche"> Mme, Mlle,Mr: <B>{{patient.nom}}</B></p>
+      <p class="espace-gauche">Né le: <B>{{patient.date_naissance|date:"d-m-Y "}}</B></p>
+      <p class="espace-gauche">Adresse compléte: <B>{{patient.adresse}}</B></p>
+      <p class="espace-gauche"> Employé à: <B> {{patient.entreprise}}</B></p>
+      <p class="espace-gauche"> Date de recrutement: <B>{{patient.date_debut|date:"d-m-Y"}}</B></p>
+      <p class="esp">En outre je déclare que le condidat surnommé est physiquement bien constitué, indemne de toute affection </p>
+      <p class="esp">tuberculeuse , mental, cancéreuse ou polimyélitique</p>
+     <p class="esp"> En conséquence des constations ci-dessus:</p>
+
+    <form method="post">
+    {% csrf_token %}
+    <div class="espace-gauche">
+        {{ form.choix }}
+    </div>
+      <br>
+      <p class="esp">Commentaire :</p>
+      {{form.texte_certificat}}
+    <!-- Other form fields ... -->
+      <br>
+      <p class ="escape_more">Fait à <B> Ouarzazate </B>le <B>{% now "Y-m-d H:i:s" %}</B> </p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+      <a href="{% url 'list_reprise'  patient.id %}" ><i class="fa-solid fa-arrow-left">Retour</i></a>
+
+  </form>
+
+
+  </div>
+</div>
+  </div>
+
+ <style>
+        .surligne-sous-ligne {
+            text-decoration: underline;
+        }
+        .espace-gauche {
+            margin-left: 80px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+        }
+        .esp {
+            margin-left: 20px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+        }
+
+
+        .escape_more{
+            margin-left: 700px;
+        }
+    </style>
+
+{% endblock %}

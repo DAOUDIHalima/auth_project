@@ -1,0 +1,114 @@
+{% extends 'Medecin/medecin.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fiche médicale</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+
+            <h1>Ajouter Fiche médicale</h1>
+
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+
+    {% if form.date.errors %}
+        <div class="alert alert-danger">
+            {% for error in form.date.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+    <div class="form-group">
+        <label for="{{ form.date.id_for_label }}">Date</label>
+        {{ form.date }}
+
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.taille.id_for_label }}">Taille</label>
+        {{ form.taille }}
+        {{ form.taille.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.poids.id_for_label }}">Poids</label>
+        {{ form.poids }}
+        {{ form.poids.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.T_A.id_for_label }}">T.A</label>
+        {{ form.T_A }}
+        {{ form.T_A.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.A_V.id_for_label }}">A.V</label>
+        {{ form.A_V }}
+        {{ form.A_V.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.pouls.id_for_label }}">Pouls</label>
+        {{ form.pouls }}
+        {{ form.pouls.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.Glycemie.id_for_label }}">Glycemie</label>
+        {{ form.Glycemie }}
+        {{ form.Glycemie.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.Albumin.id_for_label }}">Albumin</label>
+        {{ form.Albumin }}
+        {{ form.Albumin.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.Glucose.id_for_label }}">Glucose</label>
+        {{ form.Glucose }}
+        {{ form.Glucose.errors }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.Medecin_de_travail.id_for_label }}">Médecin de Travail</label>
+        {{ form.Medecin_de_travail }}
+        {{ form.Medecin_de_travail.errors }}
+    </div>
+
+                <button type="submit" class="btn btn-primary col-4">Ajouter</button>
+            </form>
+        </div>
+    </div>
+<style>
+    /* styles.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.form-container {
+  width: 80%; /* Adjust this value as needed */
+}
+
+</style>
+</body>
+</html>
+
+{%endblock%}
+
+

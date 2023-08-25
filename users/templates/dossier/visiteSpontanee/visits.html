@@ -1,0 +1,90 @@
+{% extends 'Medecin/medecin.html' %}
+{% block content %}
+<div>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h1 class="text-center">Liste des visites médicales spontanées</h1>
+        </div>
+        <div>
+            <div>
+                <a href="{% url 'create_visit' %}" class="btn btn-primary">Ajouter</a>       
+            
+                
+            <form class="search" method="post" ">
+                {% csrf_token %}
+                <div class="form-input">
+                    <input type="search" placeholder="Search..." name="keyword">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>   
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">  
+            <thead>
+                <th>patient</th>
+                <th>Date de visite</th>
+            </thead>
+            <tbody>
+                {% for visit in visits %}
+            <tr>
+                <td>{{visit.patient.nom}}</td>
+                <td>{{visit.date_visite}}</td>
+                <td><a href="{% url 'view_visit' visit.pk%}" class="btn btn-sm btn-info" >Voir</a></td>
+            </tr>
+                  
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+  
+</div>
+
+<style>
+   .search {
+   display: flex;
+   justify-content: right;
+   margin-top: 0px; /* Add some space between the form and the top of the page */
+
+}
+
+/* Style the form input container */
+.form-input {
+   display: flex;
+   align-items: center;
+   border: 1px solid #ccc;
+   border-radius: 20px;
+   padding: 5px;
+   background-color: #f0f0f0;
+}
+
+/* Style the search input field */
+.form-input input[type="search"] {
+   border: none;
+   background: transparent;
+   outline: none;
+   padding: 5px;
+}
+
+/* Style the search button */
+.form-input button {
+   border: none;
+   background: transparent;
+   outline: none;
+   cursor: pointer;
+   padding: 5px;
+}
+
+/* Add some spacing between the search icon and the input field */
+.form-input .bx {
+   margin-right: 5px;
+}
+
+/* On hover, change the background color of the search button */
+.form-input button:hover {
+   background-color: #ddd;
+}
+</style>
+
+{%endblock%}

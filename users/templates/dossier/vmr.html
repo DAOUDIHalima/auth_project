@@ -1,0 +1,62 @@
+{% extends 'Medecin/medecin.html' %}
+
+{% block content %}
+
+<h1>{{ menu_title }}</h1>
+<p>{{ menu_content }}</p>
+
+<div class="row">
+  <div class="form-container">
+
+    <div class="card my-5" style="margin:70px;">
+    <center><h1 class="surligne-sous-ligne">CERFTIFICAT D'APTITUDE PHYSIQUE</h1></center>
+    <center><h2>Reprise de travail</h2></center>
+      <br>
+      <p>Je sousigné <B>{{user}}</B>, Médecin de travail de NOMAC</p>
+      <p>Certifié avoir examiné ce jour:</p>
+      <p class="espace-gauche"> Mme, Mlle,Mr: <B>{{visite.patient.nom}}</B></p>
+      <p class="espace-gauche">Né le: <B>{{visite.patient.date_naissance|date:"d-m-Y "}}</B></p>
+      <p class="espace-gauche">Adresse compléte: <B>{{visite.patient.adresse}}</B></p>
+      <p class="espace-gauche"> Employé à: <B> {{visite.patient.entreprise}}</B></p>
+      <p class="espace-gauche"> Date de recrutement: <B>{{visite.patient.date_debut|date:"d-m-Y"}}</B></p>
+      <p >En outre je déclare que le condidat surnommé est physiquement bien constitué, indemne de toute affection </p>
+      <p >tuberculeuse , mental, cancéreuse ou polimyélitique</p>
+     <p > En conséquence des constations ci-dessus:</p>
+
+    <form method="post">
+    {% csrf_token %}
+    <div class="espace-gauche">
+        {{ form.choix }}
+    </div>
+      {{ visite.get_choix_display }}
+      <br><br>
+      <p><B>Commentaire :</B> {{visite.texte_certificat}}</p>
+      {{form.texte_certificat}}
+    <!-- Other form fields ... -->
+      <br>
+      <p class ="escape_more">Fait à <B> Ouarzazate </B>le <B>{{visite.date|date:"d-m-Y " }}</B> </p>
+
+      <a href="{% url 'add_dossier' %}" ><i class="fa-solid fa-arrow-left">Retour</i></a>
+
+
+  </form>
+
+
+  </div>
+</div>
+  </div>
+
+ <style>
+        .surligne-sous-ligne {
+            text-decoration: underline;
+        }
+        .espace-gauche {
+            margin-left: 80px; /* Vous pouvez ajuster cette valeur selon vos préférences */
+        }
+
+        .escape_more{
+            margin-left: 700px;
+        }
+    </style>
+
+{% endblock %}

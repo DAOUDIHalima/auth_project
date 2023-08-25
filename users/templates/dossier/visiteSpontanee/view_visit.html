@@ -1,0 +1,74 @@
+{% extends 'Medecin/medecin.html' %}
+{% block content %}
+<div class="card mt-3 ml-4">
+    <div class="card-header">
+        <h1>Visite spontanée du Patient {{ visit.patient.nom }}</h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            {% if visit.patient.photo %}
+            <tr>
+                <th>Photo:</th>
+                <td><img src="/media/{{ visit.patient.photo }}" width="100px" alt="Patient Photo"></td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Nom:</th>
+                <td>{{ visit.patient.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance:</th>
+                <td>{{ visit.patient.date_naissance }}</td>
+            </tr>
+            <tr>
+                <th>Age:</th>
+                <td>{{ visit.patient.age }}</td>
+            </tr>
+            <tr>
+                <th>Adresse:</th>
+                <td>{{ visit.patient.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Situation familiale:</th>
+                <td>{{ visit.patient.situation_familiale }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise:</th>
+                <td>{{ visit.patient.entreprise }}</td>
+            </tr>
+            <tr>
+                <th>Service:</th>
+                <td>{{ visit.patient.service }}</td>
+            </tr>
+            <tr>
+                <th>Poste de travail:</th>
+                <td>{{ visit.patient.poste_de_travail }}</td>
+            </tr>
+            <tr>
+                <th>Date visite:</th>
+                <td>{{ visit.date_visite }}</td>
+            </tr>
+            <tr>
+                <th>Temperature:</th>
+                <td>{{ visit.temperature }}</td>
+            </tr>
+            <tr>
+                <th>Tension arterielle :</th>
+                <td>{{ visit.tension_arterielle  }}</td>
+            </tr>
+            <tr>
+                <th>Symptomes :</th>
+                <td>{{ visit.symptomes   }}</td>
+            </tr>
+            <tr>
+                <th>Observations :</th>
+                <td>{{ visit.observations  }}</td>
+            </tr>
+
+        </table>
+        <a href="{% url 'visits' %}"><i class="fa-solid fa-arrow-right-from-bracket">Retour</i></a>
+
+
+    </div>
+</div>
+{% endblock %}

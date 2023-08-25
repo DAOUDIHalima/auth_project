@@ -331,3 +331,65 @@ class MedicineStockMovement(models.Model):
 
     def __str__(self):
         return f"{self.medicine.name} - {self.action} - {self.timestamp}"
+
+class VisiteReprise(models.Model):
+    CHOICES = (
+        ('apte', 'L\'employé est apte à reprendre son travail'),
+        ('Inapte_t', 'L\'employé est Inapte temporairement à reprendre son travail'),
+        ('Inapte_d', 'L\'employé est Inapte définitivement à reprendre son travail'),
+    )
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='visites_reprise')
+    choix = models.CharField(max_length=10, choices=CHOICES)
+    date = models.DateField(default=timezone.now)
+    texte_certificat = models.TextField()
+
+    # Add other fields as needed
+
+    def __str__(self):
+        return f"{self.choix} - {self.date}"
+
+
+
+class Analyse(models.Model):
+    nom = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nom
+
+import datetime
+
+class surveillance(models.Model):
+    patient=models.ForeignKey(Patient,on_delete=models.CASCADE)
+    date=models.DateField(default=timezone.now)
+    taille=models.DecimalField(max_digits=8, decimal_places=3)
+    poids=models.DecimalField(max_digits=8, decimal_places=3)
+    T_A=models.DecimalField(max_digits=8, decimal_places=3)
+    A_V=models.DecimalField(max_digits=8, decimal_places=3)
+    pouls=models.DecimalField(max_digits=8, decimal_places=3)
+    Glycemie=models.DecimalField(max_digits=8, decimal_places=3)
+    Albumin=models.DecimalField(max_digits=8, decimal_places=3)
+    Glucose=models.DecimalField(max_digits=8, decimal_places=3)
+    Medecin_de_travail=models.CharField(max_length=20)
+
+# models.py
+class Laboratoire(models.Model):
+    systematique = models.ForeignKey(systematique, on_delete=models.CASCADE)
+    analyse = models.ForeignKey(Analyse, on_delete=models.CASCADE)
+    fichier = models.FileField(upload_to='analyses/')
+
+
+
+
+class Notes(models.Model):
+    STATUS = (
+        ("new", "NEWEST"),
+        ("old", "OLDEST"),
+        ("title", "TITLE"),
+    )
+    heading = models.CharField(max_length=200)
+    text = models.TextField()
+    time = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=50, choices=STATUS, default="old")
+    def __str__(self):
+        return self.heading
+    

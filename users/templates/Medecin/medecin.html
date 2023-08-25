@@ -219,7 +219,7 @@
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
                          <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
                                     class="hide-menu">Employees </span></a>
                             <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                 <li class="sidebar-item"><a href="{% url 'create_patient' %}" class="sidebar-link"><span
@@ -230,29 +230,50 @@
                                             class="hide-menu"> Employees Management
                                         </span></a>
                                 </li>
-                                <li class="sidebar-item"><a href="#" class="sidebar-link"><span
-                                            class="hide-menu"> Medical supervision
-                                        </span></a>
-                                </li>
                                 
-                            </ul>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-                                    class="hide-menu">Medical record</span></a>
-                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="#" class="sidebar-link"><span
-                                            class="hide-menu"> New Medical record
-                                        </span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="#" class="sidebar-link"><span
-                                            class="hide-menu"> Medical records
-                                        </span></a>
-                                </li>
                                 
                             </ul>
                         </li>
                         
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                            aria-expanded="false"><i data-feather="folder-plus" class="feather-icon"></i><span
+                                class="hide-menu">Medical record</span></a>
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a href="{% url 'ajouterdossier' %}" class="sidebar-link"><span
+                                        class="hide-menu"> New Medical record
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{% url 'Vms' %}" class="sidebar-link"><span
+                                        class="hide-menu"> VMS
+                                    </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{% url 'Vmr' %}" class="sidebar-link"><span
+                                class="hide-menu"> VMR
+                            </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{% url 'fiche_médicale' %}" class="sidebar-link"><span
+                                class="hide-menu"> Fiche médicale
+                            </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{% url 'liste_labo' %}" class="sidebar-link"><span
+                                class="hide-menu"> Labo
+                            </span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="{% url 'add_dossier' %}" class="sidebar-link"><span
+                                class="hide-menu"> Dossier medical
+                            </span></a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'index' %}" 
+                        aria-expanded="false"><i data-feather="edit" class="feather-icon"></i><span
+                            class="hide-menu">Notes</span></a></li>
+                            
+                    </li> 
+                    </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{% url 'logout' %}" 
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
                                     class="hide-menu">Logout</span></a></li>

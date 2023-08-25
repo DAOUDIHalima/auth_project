@@ -1,0 +1,184 @@
+{% extends 'Medecin/medecin.html'  %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Afficher Détails de la Visite</title>
+</head>
+<body>
+
+<div class="card mt-0 ml-2">
+    <div class="card-header">
+            <center><h1>Détails de la Visite</h1></center>
+<div class="card-body">
+    <table class="table table-bordered">
+        <tr>
+            <th>Date:</th>
+            <td>{{ visite.date |date:"d-m-Y"}}</td>
+            <th>Denture:</th>
+            <td>{{ visite.denture }}</td>
+        </tr>
+        <tr>
+            <th>Audition OD:</th>
+            <td>{{ visite.audition_od }}</td>
+            <th>Audition OG:</th>
+            <td>{{ visite.audition_og }}</td>
+        </tr>
+
+        <tr>
+            <th>Vision OD:</th>
+            <td>{{ visite.vision_od }}</td>
+            <th>Vision OG:</th>
+            <td>{{ visite.vision_og }}</td>
+        </tr>
+
+        <tr>
+            <th>Taille:</th>
+            <td>{{ visite.taille }}</td>
+            <th>Poids:</th>
+            <td>{{ visite.poids }}</td>
+        </tr>
+
+        <tr>
+            <th>Périmètre thoracique:</th>
+            <td>{{ visite.per_thor }}</td>
+            <th>Capacité respiratoire:</th>
+            <td>{{ visite.cap_resp }}</td>
+        </tr>
+
+        <tr>
+            <th>Peau et phanères:</th>
+            <td>{{ visite.peau_phaneres }}</td>
+            <th>Locomoteur:</th>
+            <td>{{ visite.locomateur }}</td>
+        </tr>
+
+        <tr>
+            <th>Dynamomètre:</th>
+            <td>{{ visite.dynamometre }}</td>
+            <th>Respiratoire:</th>
+            <td>{{ visite.respiratoire }}</td>
+        </tr>
+
+        <tr>
+            <th>Radioscopique:</th>
+            <td>{{ visite.radioscopique }}</td>
+            <th>Vaisseaux:</th>
+            <td>{{ visite.vaisseaux }}</td>
+        </tr>
+
+        <tr>
+            <th>Varices:</th>
+            <td>{{ visite.varices }}</td>
+            <th>Cœur:</th>
+            <td>{{ visite.coeur }}</td>
+        </tr>
+
+        <tr>
+            <th>Ganglions:</th>
+            <td>{{ visite.gangalions }}</td>
+            <th>Pouls:</th>
+            <td>{{ visite.pouls }}</td>
+        </tr>
+
+        <tr>
+            <th>Tension artérielle:</th>
+            <td>{{ visite.TA }}</td>
+            <th>Abdomen:</th>
+            <td>{{ visite.abdomen }}</td>
+        </tr>
+
+        <tr>
+            <th>Foie:</th>
+            <td>{{ visite.foie }}</td>
+            <th>Bouche:</th>
+            <td>{{ visite.bouche }}</td>
+        </tr>
+
+        <tr>
+            <th>Rate:</th>
+            <td>{{ visite.rate }}</td>
+            <th>Cicatrice:</th>
+            <td>{{ visite.cicatrice }}</td>
+        </tr>
+
+        <tr>
+            <th>Blénnorragie:</th>
+            <td>{{ visite.blenno }}</td>
+            <th>Règles:</th>
+            <td>{{ visite.regles }}</td>
+        </tr>
+
+        <tr>
+            <th>Neuro-psychisme:</th>
+            <td>{{ visite.neuro_psychisme }}</td>
+            <th>Nervosisme:</th>
+            <td>{{ visite.nervosisme }}</td>
+        </tr>
+
+        <tr>
+            <th>Tremblement:</th>
+            <td>{{ visite.tremblement }}</td>
+            <th>Équilibre:</th>
+            <td>{{ visite.equilibre }}</td>
+        </tr>
+
+        <tr>
+            <th>Signe de Romberg:</th>
+            <td>{{ visite.romberg }}</td>
+            <th>Réflexes ostéo-cutanés:</th>
+            <td>{{ visite.reflxes_oc }}</td>
+        </tr>
+
+        <tr>
+            <th>Réflexes tendineux:</th>
+            <td>{{ visite.reflexes_trend }}</td>
+            <th>Test de CUTT:</th>
+            <td>{{ visite.cutt }}</td>
+        </tr>
+
+        <tr>
+            <th>Sédimentation:</th>
+            <td>{{ visite.sedimenation }}</td>
+            <th>Crachat:</th>
+            <td>{{ visite.crachat }}</td>
+        </tr>
+
+        <tr>
+            <th>Selle:</th>
+            <td>{{ visite.selle }}</td>
+            <th>Urines:</th>
+            <td>{{ visite.urines }}</td>
+        </tr>
+
+        <tr>
+            <th>Sang:</th>
+            <td>{{ visite.get_sang_display }}</td>
+            <th>Situation:</th>
+            <td>{{ visite.get_situation_display }}</td>
+        </tr>
+
+        <tr>
+            <th>à surveiller chaque :</th>
+            <td>{{ visite.get_surveiller_display }}</td>
+            <th>Commentaire:</th>
+            <td>{{ visite.commentaire }}</td>
+        </tr>
+        <tr>
+        <th>Analyses à faire</th>
+<td>
+    {% for analyse in visite.analyses.all %}
+        {{ analyse.nom }}
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</td>
+    </tr>
+
+    </table>
+    <p><a href="{% url 'add_dossier' %}">Retour à la liste des visites</a></p>
+</div>
+    </div></div>
+</body>
+</html>
+
+{%endblock%}

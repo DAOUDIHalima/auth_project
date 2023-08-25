@@ -1,0 +1,53 @@
+{% extends 'Medecin/medecin.html' %}
+
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Horizontal Menus</title>
+
+
+</head>
+<body>
+<div class ="back">
+<br>
+  <center><h2>Détails de la visite</h2></center>
+<p><strong>Employe :</strong> {{ visite.patient.nom }}</p>
+<p><strong>Date de la visite :</strong> {{ visite.date | date:'d-m-Y' }}</p>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if error_message %}
+      <div class="alert alert-danger">
+        {{ error_message }}
+      </div>
+    {% endif %}
+
+    <div class="table-responsive text-center">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Analyse</th>
+        <th>Scanner</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for analyse in visite.analyses.all %}
+        <tr>
+          <td>{{ analyse.nom }}</td>
+          <td>
+            <input type="file" name="fichier_{{ analyse.pk }}" accept="image/*" class="form-control-file">
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+    <center><button type="submit" class="btn btn-info">Enregistrer</button></center>
+  </form>
+</div>
+{% endblock %}
+

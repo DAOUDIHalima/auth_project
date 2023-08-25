@@ -1,67 +1,70 @@
 {% extends 'Medecin/medecin.html' %}
 {% block content %}
-<div class="page-wrapper">
-    <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-7 align-self-center">
-                <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Liste of Medical Records</h2>
-                <div class="d-flex align-items-center">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb m-0 p-0">
-                            <li class="breadcrumb-item">Home </li>
-                            <li class="breadcrumb-item text-muted active" aria-current="page">Medical Record</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            <div class="col-5 align-self-center">
-                <div class="customize-input float-end">
-                    <a href="{% url 'create_dossier_medical' %}" class="btn btn-primary mr-1 ">New Record</a>    
-                
-                </div>
-            </div>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Two Horizontal Menus</title>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                
-        </div>
+</head>
+<body>
+<br>
 
-<div class="table-responsive">
-<table id="zero_config" class="table border table-striped table-bordered text-nowrap">
-                        
-                    <thead>
-                        <tr>
-                            <th>Numero</th>
-                            <th>Employee Name</th>
-                            <th>Actions</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for i in dossiers %}
-                        <tr>
-                            <td>{{ i.numero }}</td>
-                            <td>{{ i.patient.name }}</td>
-                            
-                            <!-- Add conditional formatting to display status in red if expired -->
-                           
-                            <td>
-                                <a href="{% url 'view_info' i.pk %}" class="btn btn-sm btn-info">View</a>
+    <br>
+    <nav class="menu">
+        <center><h2>Dossier médical</h2></center>
+        <ul>
+            <li><i class='bx bxs-user'><a href="{% url 'view_patient_dossier' patient.pk %}"> <strong>Patient</strong></a></i></li>
+            <li><i class='bx bx-notepad'><a href="{% url 'view_info' patient.pk%}"> Informations</a></i></li>
+            <li><i class='bx bxs-first-aid'><a href="{% url 'liste_vms_par_patient' patient.pk%}"> Visite médicale systématique</a></i></li>
+            <li><i class='bx bx-first-aid' ><a href="{% url 'liste_vmr_par_patient' patient.pk%}"> Visite médicale de reprise</a></i></li>
+            <li><i class='bx bxs-folder-open' ><a href="{% url 'liste_surv_par_patient' patient.pk%}"> Fiche médicale</a></i></li>
+        </ul>
+    </nav>
 
-                                <a href="{% url 'update_dossier_medical' i.pk %}" class="btn btn-sm btn-success">Edit</a>
-                                <a href="{% url 'delete_dossier_medical' i.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('Confirmation?')">Delete</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+
+        {% block menu_content %}
+        {% endblock %}
+<style>
+    /* Reset default margins and paddings for the entire page */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the navigation menu */
+.menu {
+    background-color: #293300;
+    color: #293300;
+
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.menu li {
+    margin: 0 11.5px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff9900;
+}
+.menu h2{
+
+    text-align: left;
+}
+</style>
+</body>
+</html>
 {% endblock %}
+
